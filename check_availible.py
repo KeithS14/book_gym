@@ -3,7 +3,7 @@ from selenium import webdriver
 # Specify the path to the ChromeDriver executable
 #webdriver_path = "C:\Users\kscan\OneDrive\Desktop\Random Code\chromedriver_win32\chromedriver.exe"
 
-driver = webdriver.Chrome()
+driver = webdriver.Firefox
 
 ##driver.maximize_window()  
 
