@@ -60,14 +60,7 @@ class ChromeDriver:
             print("Message sent!")
         asyncio.run(main())
 
-    """ async def main():
-    api_key = '6008231050:AAGAZ68BXofK5n14uzC7zdQsrLlYYoxpDME'
-    user_id = '6087124042'
-
-    #bot = Bot(token=api_key)
-    bot = telegram.Bot(token=api_key)
-    await bot.send_message(chat_id=user_id, text='goodbye world3')
-asyncio.run(main()) """
+ 
     
     def check_free_slot(self):
         
@@ -140,38 +133,9 @@ asyncio.run(main()) """
 
 
 
-#def start_driver():
-#    WINDOW_SIZE = "1920,1080"
-#    #CHROMEDRIVER_PATH = "C:\Users\kscan\OneDrive\Desktop\chromedriver_win32\chromedriver.exe"
-#    CHROMEDRIVER_PATH = r"C:\Users\kscan\OneDrive\Desktop\chromedriver_win32\chromedriver.exe"
-#
-#    chrome_options = Options()
-#    chrome_options.add_argument("--headless")
-#    chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
-#    
-#    driver = webdriver.Chrome(options=chrome_options, executable_path=CHROMEDRIVER_PATH)
-#    #driver = webdriver.Chrome(executable_path='C:\Users\kscan\OneDrive\Desktop\chromedriver\chromedriver.exe')
-#    #driver = webdriver.Chrome(executable_path=r'C:\Users\kscan\OneDrive\Desktop\chromedriver_win32\chromedriver.exe')
-#    url = 'https://app.glofox.com/portal/#/branch/5b6dd1a5e90c2d1f403fccb6/classes-day-view?header=classes,courses'
-#
-#    driver.get(url)
-#
-#    # Add a delay to allow the page to load
-#    time.sleep(2) 
-#    times, slots = process_info(driver)
-#    time_value = process_args()
-#    for i in range(len(slots)):
-#        print("Red Gym: ", times[i], slots[i])
-#
-#
-#    if time_value != None:
-#        index = times.index(time_value)
-#        print("Red Gym: ", times[index], slots[index])
-#    driver.quit()
 
 
 driver = ChromeDriver()
 driver.check_free_slot()
 
-# Discord bot token MTExMzE5NjY2OTE0ODg2MDQ5Ng.G9Hi2o.CXKLfSTDl1V1ylO3-2YiVisPbGnA4MiibJhfSU
 
