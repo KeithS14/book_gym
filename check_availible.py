@@ -5,6 +5,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 import argparse 
+import telegram
+import asyncio
 
 class ChromeDriver:
     def __init__(self):
@@ -47,9 +49,25 @@ class ChromeDriver:
         print('Time:', time_value)
         return time_value
     
-    def send_email(self):
-        print("Email sent to kscannell11@gmail.com") 
-        pass
+    def send_notif(self):
+        async def main():
+            api_key = '6008231050:AAGAZ68BXofK5n14uzC7zdQsrLlYYoxpDME'
+            user_id = '6087124042'
+
+            #bot = Bot(token=api_key)
+            bot = telegram.Bot(token=api_key)
+            await bot.send_message(chat_id=user_id, text=f'Spot availible at {self.time_value}')
+            print("Message sent!")
+        asyncio.run(main())
+
+    """ async def main():
+    api_key = '6008231050:AAGAZ68BXofK5n14uzC7zdQsrLlYYoxpDME'
+    user_id = '6087124042'
+
+    #bot = Bot(token=api_key)
+    bot = telegram.Bot(token=api_key)
+    await bot.send_message(chat_id=user_id, text='goodbye world3')
+asyncio.run(main()) """
     
     def check_free_slot(self):
         
@@ -71,7 +89,7 @@ class ChromeDriver:
             #print(int(slots[index].split("/")[0]))
             self.driver.quit()
         if self.free_slot:
-            self.send_email()
+            self.send_notif()
              
         
     
@@ -155,5 +173,5 @@ class ChromeDriver:
 driver = ChromeDriver()
 driver.check_free_slot()
 
-
+# Discord bot token MTExMzE5NjY2OTE0ODg2MDQ5Ng.G9Hi2o.CXKLfSTDl1V1ylO3-2YiVisPbGnA4MiibJhfSU
 
