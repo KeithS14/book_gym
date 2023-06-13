@@ -8,6 +8,10 @@ import argparse
 import telegram
 import asyncio
 
+
+
+
+# run with python3 check_availible.py --time 07:00
 class ChromeDriver:
     def __init__(self):
         
