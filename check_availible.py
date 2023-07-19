@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.service import Service
 import time
 import argparse 
 import telegram
@@ -19,18 +20,25 @@ class ChromeDriver:
         self.driver = None
         self.url = 'https://app.glofox.com/portal/#/branch/5b6dd1a5e90c2d1f403fccb6/classes-day-view?header=classes,courses'
         self.free_slot = False
-        self.time_value = self.process_args_time()
+        #self.time_value = self.process_args_time()
+        self.time_value = "07:00"
+        self.day = "FRI"
+        self.date = "16" 
         self.time_valid = True
         
         
     def driver_get_url(self):
         WINDOW_SIZE = "1920,1080"
         #CHROMEDRIVER_PATH = "C:\Users\kscan\OneDrive\Desktop\chromedriver_win32\chromedriver.exe"
-        CHROMEDRIVER_PATH = r"C:\Users\kscan\OneDrive\Desktop\chromedriver_win32\chromedriver.exe"
+        CHROMEDRIVER_PATH = "C:/Users/kscan/OneDrive/Desktop/Random Code/book_gym/chromedriver.exe"
+
         chrome_options = Options()
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
-        self.driver =  webdriver.Chrome(options=chrome_options, executable_path=CHROMEDRIVER_PATH)
+        #self.driver =  webdriver.Chrome(options=chrome_options)#, executable_path=CHROMEDRIVER_PATH)
+        
+        service = Service(executable_path=CHROMEDRIVER_PATH)
+        self.driver = webdriver.Chrome(options=chrome_options, service=service)
         self.driver.get(self.url)
         #print("Delay")
         #time.sleep(2) 
@@ -95,7 +103,16 @@ class ChromeDriver:
         #elements_present = WebDriverWait(self.driver, 20).until(
         #    EC.presence_of_all_elements_located((By.CSS_SELECTOR, "div.list-text-left"))
         #)
-        time.sleep(2)
+        
+        # Wait for the page to load and the desired elements to be clickable
+        #wait = WebDriverWait(self.driver, 10)
+        #day_element = wait.until(EC.element_to_be_clickable((By.XPATH, f"//span[@class='top ng-binding' and text()='{self.day}']")))
+        #date_element = wait.until(EC.element_to_be_clickable((By.XPATH, f"//span[@class='bottom ng-binding' and text()='{self.date}']")))
+
+        # Click on the day and date elements
+        #day_element.click()
+        #date_element.click()
+        
         # Find the element that displays the slots joined
         # Find all elements that contain gym information
         elements = self.driver.find_elements("css selector", "div.list-text-left")
